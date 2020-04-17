@@ -7,7 +7,6 @@ from const import *
 
 
 class PyPaint:
-    selected_pen_size = 0.0
     color_draw = BLACK
     pen_size = 5.0
 
@@ -61,7 +60,7 @@ class PyPaint:
     def size(self):
         if root.counter == 0:
             self.button8 = Scale(root, from_=1, to=100, bg="white", fg="black", length=500, orient=HORIZONTAL,
-                                 variable=self.selected_pen_size)
+                                 variable=selected_pen_size)
             self.button8.grid(row=1, columnspan=5)
             self.button9 = Button(root, text="Selecionar", bg="black", fg="white", width=11, command=self.select)
             self.button9.grid(row=1, column=5)
@@ -72,7 +71,7 @@ class PyPaint:
             self.close_size()
 
     def select(self):
-        self.pen_size = self.selected_pen_size.get()
+        self.pen_size = selected_pen_size.get()
         self.close_size()
 
     def close_size(self):
@@ -116,6 +115,7 @@ class PyPaint:
 root = Tk()
 root.counter = 0
 root.counter2 = 0
+selected_pen_size = DoubleVar()
 root.title("PyPaint")
 
 canvas = Canvas(root, bg="white", width=WIDTH, height=HEIGHT)
